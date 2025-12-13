@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://ycg76yj27jvh" path="res://scripts/debug/fps_counter.gd" id="3_1moov"]
 [ext_resource type="PackedScene" uid="uid://db8ps46qixelv" path="res://prefabs/game_manager.tscn" id="4_63fu1"]
 [ext_resource type="Script" uid="uid://d0htw687undpf" path="res://scripts/debug/frame_stamp.gd" id="5_ob026"]
-[ext_resource type="Script" uid="uid://df4tdk6q17xqr" path="res://scripts/toolbox/array.gd" id="6_i6uhy"]
-[ext_resource type="PackedScene" uid="uid://h2qip6vnmd31" path="res://prefabs/particle_prefab.tscn" id="7_voen0"]
+[ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
+[ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1moov"]
 size = Vector2(127.808, 139.429)
@@ -45,7 +45,10 @@ offset_right = 61.0
 offset_bottom = 33.0
 script = ExtResource("5_ob026")
 
-[node name="Node" type="Node2D" parent="."]
-position = Vector2(583, 172)
-script = ExtResource("6_i6uhy")
-object_scene = ExtResource("7_voen0")
+[node name="cannon" type="Node2D" parent="."]
+position = Vector2(206, 240)
+script = ExtResource("8_4bo10")
+projectile_scene = ExtResource("9_d357a")
+launch_force = 600.0
+min_delay = 0.1
+max_delay = 0.2
