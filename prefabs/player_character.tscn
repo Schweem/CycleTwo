@@ -9,6 +9,8 @@ size = Vector2(135, 131)
 [node name="playerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_6r27q")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="boxCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_puv4i")

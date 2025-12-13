@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://db8ps46qixelv"]
+[gd_scene load_steps=4 format=3 uid="uid://db8ps46qixelv"]
 
 [ext_resource type="Script" uid="uid://cwd82l8j57xds" path="res://scripts/debug/pause_controller.gd" id="1_bq1pa"]
+[ext_resource type="Script" uid="uid://ycg76yj27jvh" path="res://scripts/debug/fps_counter.gd" id="2_o8xys"]
+[ext_resource type="Script" uid="uid://d0htw687undpf" path="res://scripts/debug/frame_stamp.gd" id="3_yh24s"]
 
 [node name="gameManager" type="Node2D"]
 script = ExtResource("1_bq1pa")
+
+[node name="fpsCounter" type="Label" parent="."]
+z_index = 5
+offset_left = 37.0
+offset_top = 41.0
+offset_right = 141.0
+offset_bottom = 99.0
+script = ExtResource("2_o8xys")
+
+[node name="stampFrames" type="Label" parent="."]
+z_index = 5
+offset_left = 21.0
+offset_top = 10.0
+offset_right = 61.0
+offset_bottom = 33.0
+script = ExtResource("3_yh24s")

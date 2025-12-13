@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=7 format=3 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="2_puv4i"]
-[ext_resource type="Script" uid="uid://ycg76yj27jvh" path="res://scripts/debug/fps_counter.gd" id="3_1moov"]
 [ext_resource type="PackedScene" uid="uid://db8ps46qixelv" path="res://prefabs/game_manager.tscn" id="4_63fu1"]
-[ext_resource type="Script" uid="uid://d0htw687undpf" path="res://scripts/debug/frame_stamp.gd" id="5_ob026"]
 [ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
 [ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
@@ -16,6 +14,17 @@ size = Vector2(127.808, 139.429)
 [node name="playerCharacter" parent="." instance=ExtResource("1_7mhm3")]
 position = Vector2(577, 334)
 
+[node name="gameManager" parent="playerCharacter" instance=ExtResource("4_63fu1")]
+position = Vector2(-577, -334)
+
+[node name="cannon" type="Node2D" parent="."]
+position = Vector2(206, 240)
+script = ExtResource("8_4bo10")
+projectile_scene = ExtResource("9_d357a")
+launch_force = 600.0
+min_delay = 0.1
+max_delay = 0.2
+
 [node name="testFloor" type="Sprite2D" parent="."]
 position = Vector2(575, 439)
 scale = Vector2(8.96875, 0.4375)
@@ -26,29 +35,3 @@ texture = ExtResource("2_puv4i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="testFloor/Area2D"]
 position = Vector2(0.0962553, 5.71429)
 shape = SubResource("RectangleShape2D_1moov")
-
-[node name="gameManager" parent="." instance=ExtResource("4_63fu1")]
-
-[node name="fpsCounter" type="Label" parent="gameManager"]
-z_index = 5
-offset_left = 37.0
-offset_top = 41.0
-offset_right = 141.0
-offset_bottom = 99.0
-script = ExtResource("3_1moov")
-
-[node name="stampFrames" type="Label" parent="gameManager"]
-z_index = 5
-offset_left = 21.0
-offset_top = 10.0
-offset_right = 61.0
-offset_bottom = 33.0
-script = ExtResource("5_ob026")
-
-[node name="cannon" type="Node2D" parent="."]
-position = Vector2(206, 240)
-script = ExtResource("8_4bo10")
-projectile_scene = ExtResource("9_d357a")
-launch_force = 600.0
-min_delay = 0.1
-max_delay = 0.2
