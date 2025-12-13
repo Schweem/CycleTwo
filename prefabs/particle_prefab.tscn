@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://h2qip6vnmd31"]
+
+[sub_resource type="Gradient" id="Gradient_up7ts"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2vnmb"]
+gradient = SubResource("Gradient_up7ts")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_og6lw"]
+particle_flag_disable_z = true
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 70.43
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.5
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 206.52
+gravity = Vector3(0, 98, 0)
+
+[node name="particlePrefab" type="GPUParticles2D"]
+texture = SubResource("GradientTexture2D_2vnmb")
+process_material = SubResource("ParticleProcessMaterial_og6lw")
