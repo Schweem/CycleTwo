@@ -1,13 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=10 format=4 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="2_puv4i"]
 [ext_resource type="PackedScene" uid="uid://db8ps46qixelv" path="res://prefabs/game_manager.tscn" id="4_63fu1"]
+[ext_resource type="Texture2D" uid="uid://crg6jj1qsymnd" path="res://assets/sprites/sampleTiles.png" id="6_4lv6h"]
 [ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
 [ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1moov"]
 size = Vector2(127.808, 139.429)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6uhy"]
+texture = ExtResource("6_4lv6h")
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.179857, 8, -0.179857, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.179857, 8, -0.179857, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_voen0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_i6uhy")
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,7 +43,8 @@ size = Vector2(127.808, 139.429)
 position = Vector2(577, 334)
 
 [node name="gameManager" parent="playerCharacter" instance=ExtResource("4_63fu1")]
-position = Vector2(-577, -334)
+position = Vector2(-130, -101)
+scale = Vector2(0.25, 0.25)
 
 [node name="cannon" type="Node2D" parent="."]
 position = Vector2(206, 240)
@@ -35,3 +64,8 @@ texture = ExtResource("2_puv4i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="testFloor/Area2D"]
 position = Vector2(0.0962553, 5.71429)
 shape = SubResource("RectangleShape2D_1moov")
+
+[node name="CollisionTiles" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAiABUAAAAEAAAAAAAiABYAAAAEAAIAAAAjABYAAAAFAAIAAAAkABYAAAAFAAIAAAAlABYAAAAFAAIAAAAmABYAAAAFAAIAAAAnABYAAAAFAAIAAAAoABYAAAAGAAIAAAAoABUAAAAGAAEAAAAoABQAAAAGAAEAAAAoABMAAAAGAAEAAAAoABIAAAAGAAAAAAAbABQAAAAAAAEAAAAcABQAAAABAAEAAAAdABQAAAACAAEAAAAUABIAAAAAAAEAAAAVABIAAAABAAEAAAAWABIAAAACAAEAAAAbAA4AAAAAAAEAAAAcAA4AAAABAAEAAAAdAA4AAAABAAEAAAAeAA4AAAABAAEAAAAfAA4AAAABAAEAAAAgAA4AAAABAAEAAAAhAA4AAAABAAEAAAAiAA4AAAABAAEAAAAjAA4AAAABAAEAAAAkAA4AAAABAAEAAAAlAA4AAAACAAEAAAA=")
+tile_set = SubResource("TileSet_voen0")

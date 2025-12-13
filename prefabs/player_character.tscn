@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=5 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
 [ext_resource type="Texture2D" uid="uid://dmtockdfhi14o" path="res://assets/sprites/testPlayer.png" id="2_js7ph"]
+[ext_resource type="Texture2D" uid="uid://bcyuy316l8lt4" path="res://assets/sprites/swordTest.png" id="3_tpdek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
 size = Vector2(12, 15)
@@ -10,8 +11,8 @@ size = Vector2(12, 15)
 script = ExtResource("1_6r27q")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -44)
-zoom = Vector2(4.5, 4.5)
+position = Vector2(0, -28)
+zoom = Vector2(4.1, 4.1)
 
 [node name="boxCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -20,3 +21,11 @@ shape = SubResource("RectangleShape2D_puv4i")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_js7ph")
+
+[node name="SwordTest" type="Sprite2D" parent="Sprite2D"]
+z_index = -1
+texture_filter = 1
+position = Vector2(-6, -1)
+rotation = 1.5708
+scale = Vector2(1, 1)
+texture = ExtResource("3_tpdek")
