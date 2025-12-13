@@ -15,6 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # on ready, usually children calls
 @onready var baseSprite : Sprite2D = $Sprite2D
 @onready var sword : Sprite2D = $Sprite2D/SwordTest
+@onready var swordPosition : float = sword.swordPosition
 	
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
@@ -37,6 +38,9 @@ func handle_inputs() -> void:
 	if !is_on_floor():
 		if Input.is_action_just_released("jump"):
 			velocity.y = velocity.y / jump_res
+
+	if Input.is_action_just_pressed("draw"):
+		sword.drawSword()
 	
 	# get direction, handle speed and apply it 
 	var dir = Input.get_axis("left", "right")
@@ -44,12 +48,16 @@ func handle_inputs() -> void:
 		baseSprite.flip_h = true
 
 		sword.flip_v = true
-		sword.position.x = 6
-	else:
+		sword.position.x = abs(swordPosition)
+	elif dir > 0:
 		baseSprite.flip_h = false
 
 		sword.flip_v = false
-		sword.position.x = -6
+		sword.position.x = swordPosition
+	# third case to let it linger
+	else:
+		baseSprite.flip_h = baseSprite.flip_h
+		sword.position.x = sword.position.x
 	
 	var speed : float = BASE_SPEED * speed_mult
 	if dir:
