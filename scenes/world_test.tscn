@@ -40,7 +40,7 @@ sources/0 = SubResource("TileSetAtlasSource_i6uhy")
 [node name="Node2D" type="Node2D"]
 
 [node name="playerCharacter" parent="." instance=ExtResource("1_7mhm3")]
-position = Vector2(577, 334)
+position = Vector2(577, 343)
 
 [node name="gameManager" parent="playerCharacter" instance=ExtResource("4_63fu1")]
 position = Vector2(-130, -101)
