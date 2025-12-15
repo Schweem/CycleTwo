@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal flipped(flag : bool)
+
 # constants
 const BASE_SPEED : float = 200.0
 const JUMP_SPEED : float = -350.0
@@ -23,12 +25,10 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		if coyote_time > 0:
 			coyote_time -= 0.1
-			print(coyote_time)
 		velocity.y += gravity * delta
 	else:
 		if coyote_time < 1.0:
 			coyote_time += 0.1
-			print(coyote_time)
 
 	# Input controller handler
 	handle_inputs()
@@ -56,11 +56,13 @@ func handle_inputs() -> void:
 	var dir = Input.get_axis("left", "right")
 	if dir < 0:
 		baseSprite.flip_h = true
+		flipped.emit(true)
 
 		sword.flip_v = true
 		sword.position.x = abs(swordPosition)
 	elif dir > 0:
 		baseSprite.flip_h = false
+		flipped.emit(false)
 
 		sword.flip_v = false
 		sword.position.x = swordPosition

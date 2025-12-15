@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba67nxdfhgmj1"]
+
+[ext_resource type="Texture2D" uid="uid://bcyuy316l8lt4" path="res://assets/sprites/swordTest.png" id="1_l7m7y"]
+[ext_resource type="Script" uid="uid://brp5gwx16iub0" path="res://scripts/sword_controller.gd" id="2_qu5qp"]
+[ext_resource type="Texture2D" uid="uid://dslynlba3ce5n" path="res://assets/sprites/slash.png" id="3_npbw0"]
+[ext_resource type="Script" uid="uid://tm62jyktlwo7" path="res://scripts/sword_slash.gd" id="4_qu5qp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7m7y"]
+size = Vector2(7, 13)
+
+[node name="SwordTest" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_l7m7y")
+script = ExtResource("2_qu5qp")
+
+[node name="Slash" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.999931, -19)
+rotation = -1.5708
+texture = ExtResource("3_npbw0")
+script = ExtResource("4_qu5qp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Slash"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slash/StaticBody2D"]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_l7m7y")
