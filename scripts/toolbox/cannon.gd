@@ -6,6 +6,9 @@ extends Node2D
 @export var max_delay: float = 4.0
 
 var _timer: Timer
+var bombCount : int = 0
+@export var maxBombs : int = 10
+
 # Internal timer
 
 # ---------------------------------------------------------------------
@@ -39,20 +42,28 @@ func _fire_projectile() -> void:
 		push_warning("Projectile scene not assigned.")
 		return
 	
-	# Instance projectile
-	var projectile := projectile_scene.instantiate()
+	if bombCount < maxBombs:
+		# Instance projectile
+		var projectile := projectile_scene.instantiate()
 
-	# Attach to scene
-	get_tree().current_scene.add_child(projectile)
+		# Attach to scene
+		get_tree().current_scene.add_child(projectile)
+		bombCount += 1
 
-	# Set position and orientation at cannon origin
-	projectile.global_transform = global_transform
+		# Set position and orientation at cannon origin
+		projectile.global_transform = global_transform
 
-	# Apply physics impulse straight forward (+Z)
-	# Assumes projectile root is a RigidBody2D
-	if projectile is RigidBody2D:
-		var forward := global_transform.y
-		projectile.apply_impulse(forward * launch_force)
+		# Apply physics impulse straight forward (+Z)
+		# Assumes projectile root is a RigidBody2D
+		if projectile is RigidBody2D:
+			var forward := global_transform.y
+			projectile.apply_impulse(forward * launch_force)
+		else:
+			push_warning("Projectile scene root must be a RigidBody2D.")
 	else:
-		push_warning("Projectile scene root must be a RigidBody2D.")
+		if bombCount < maxBombs + 2:
+			bombCount += 1
+			print("Max bombs reached")
+		else:
+			pass
 

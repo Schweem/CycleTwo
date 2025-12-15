@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 # constants
 const BASE_SPEED : float = 200.0
-const JUMP_SPEED : float = -450.0
+const JUMP_SPEED : float = -350.0
 
 # regular vars
 var speed_mult : float = 1.0
 # variable jump height stuff
 var jump_res : float = 3.0
+var coyote_time : float = 1.0
 
 # gravity from engine 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -20,8 +21,15 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
 	if !is_on_floor():
+		if coyote_time > 0:
+			coyote_time -= 0.1
+			print(coyote_time)
 		velocity.y += gravity * delta
-	
+	else:
+		if coyote_time < 1.0:
+			coyote_time += 0.1
+			print(coyote_time)
+
 	# Input controller handler
 	handle_inputs()
 	# Character body fun for applying motion
@@ -31,7 +39,9 @@ func _physics_process(delta: float) -> void:
 func handle_inputs() -> void:
 	# simple jump, input handling 
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		# is_on_floor()
+		if coyote_time > 0:
+			coyote_time = 0
 			velocity.y = JUMP_SPEED
 
 	# variable jump height
