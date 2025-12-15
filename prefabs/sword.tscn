@@ -22,8 +22,10 @@ rotation = -1.5708
 texture = ExtResource("3_npbw0")
 script = ExtResource("4_qu5qp")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Slash"]
+[node name="StaticBody2D" type="Area2D" parent="Slash"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slash/StaticBody2D"]
 position = Vector2(3.5, -1.5)
 shape = SubResource("RectangleShape2D_l7m7y")
+
+[connection signal="area_entered" from="Slash/StaticBody2D" to="." method="melee_contact"]

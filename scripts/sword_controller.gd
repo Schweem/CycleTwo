@@ -44,9 +44,9 @@ func _character_flipped(flag: bool) -> void:
 	# true == flipped, false == not flipped
 	if (flag == true) and (sheathed == false):
 		offset = abs(attackOffset)
+
 		slashObject.flip_h = true
 		slashObject.offset.x = -40
-		# -42 for collider for slash
 		slashObject.collider.position.x = -42
 
 	else:
@@ -57,3 +57,7 @@ func _character_flipped(flag: bool) -> void:
 			slashObject.collider.position.x = 0
 		else:
 			offset = Vector2(0,0)
+
+func melee_contact(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		area.takeDamage()

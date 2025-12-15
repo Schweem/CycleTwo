@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=11 format=4 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="2_puv4i"]
 [ext_resource type="PackedScene" uid="uid://db8ps46qixelv" path="res://prefabs/game_manager.tscn" id="4_63fu1"]
 [ext_resource type="Texture2D" uid="uid://crg6jj1qsymnd" path="res://assets/sprites/sampleTiles.png" id="6_4lv6h"]
+[ext_resource type="PackedScene" uid="uid://bovyp4s1u2luk" path="res://prefabs/test_enemy.tscn" id="7_i6uhy"]
 [ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
 [ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
@@ -69,3 +70,6 @@ shape = SubResource("RectangleShape2D_1moov")
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAiABUAAAAEAAAAAAAiABYAAAAEAAIAAAAjABYAAAAFAAIAAAAkABYAAAAFAAIAAAAlABYAAAAFAAIAAAAmABYAAAAFAAIAAAAnABYAAAAFAAIAAAAoABYAAAAGAAIAAAAoABUAAAAGAAEAAAAoABQAAAAGAAEAAAAoABMAAAAGAAEAAAAoABIAAAAGAAAAAAAbABQAAAAAAAEAAAAcABQAAAABAAEAAAAdABQAAAACAAEAAAAUABIAAAAAAAEAAAAVABIAAAABAAEAAAAWABIAAAACAAEAAAAbAA4AAAAAAAEAAAAcAA4AAAABAAEAAAAdAA4AAAABAAEAAAAeAA4AAAABAAEAAAAfAA4AAAABAAEAAAAgAA4AAAABAAEAAAAhAA4AAAABAAEAAAAiAA4AAAABAAEAAAAjAA4AAAABAAEAAAAkAA4AAAABAAEAAAAlAA4AAAACAAEAAAApABEAAAAEAAAAAAApABIAAAAEAAEAAAApABMAAAAEAAEAAAApABQAAAAEAAEAAAApABUAAAAEAAEAAAApABYAAAAEAAIAAAAqABYAAAAFAAIAAAArABYAAAAFAAIAAAAsABYAAAAFAAIAAAAtABYAAAAFAAIAAAAuABYAAAAFAAIAAAAvABYAAAAFAAIAAAAwABUAAAAGAAAAAAAwABYAAAAGAAIAAAAqABQAAAAEAAAAAAAqABUAAAAEAAEAAAAeABgAAAAAAAEAAAAfABgAAAABAAEAAAAgABgAAAACAAEAAAAyABcAAAAAAAEAAAAzABcAAAABAAEAAAA0ABcAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_voen0")
+
+[node name="testEnemy" parent="." instance=ExtResource("7_i6uhy")]
+position = Vector2(457, 311)

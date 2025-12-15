@@ -12,7 +12,10 @@ func activate() -> void:
     active = !active
     if active == false:
         visible = true
+        collider.disabled = false
         await get_tree().create_timer(0.3).timeout
         visible = false
+        collider.disabled = true
     else:
         visible = false
+        collider.disabled = true
