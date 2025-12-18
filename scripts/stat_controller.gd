@@ -33,6 +33,7 @@ func increaseXp(amount : float) -> void:
             remainder = playerXp - levelXp
         else:
             remainder = 0
+        #print(remainder)
         levelUp(remainder)
 
 func levelUp(remainder : float) -> void:

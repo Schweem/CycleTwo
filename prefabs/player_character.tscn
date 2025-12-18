@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=7 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
+[ext_resource type="Script" uid="uid://c302pf7vi3ll3" path="res://scripts/uiController.gd" id="2_dwetx"]
 [ext_resource type="Texture2D" uid="uid://dmtockdfhi14o" path="res://assets/sprites/testPlayer.png" id="2_js7ph"]
 [ext_resource type="PackedScene" uid="uid://ba67nxdfhgmj1" path="res://prefabs/sword.tscn" id="3_tpdek"]
-[ext_resource type="Script" uid="uid://yn51t1n6er8i" path="res://scripts/stat_controller.gd" id="4_ghbl2"]
+[ext_resource type="PackedScene" uid="uid://wyixcnyvwf2y" path="res://prefabs/stat_controller.tscn" id="4_ghbl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
 size = Vector2(10, 17)
@@ -14,6 +15,52 @@ script = ExtResource("1_6r27q")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 zoom = Vector2(4.1, 4.1)
+
+[node name="Control" type="Control" parent="Camera2D"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = -134.0
+offset_top = -73.0
+offset_right = 134.0
+offset_bottom = 73.0
+script = ExtResource("2_dwetx")
+
+[node name="levelLabel" type="Label" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 62.0
+offset_right = 299.0
+offset_bottom = 85.0
+scale = Vector2(0.639999, 0.559999)
+text = "Level: 0"
+
+[node name="xpLabel" type="Label" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 75.0
+offset_right = 295.0
+offset_bottom = 98.0
+scale = Vector2(0.639999, 0.559999)
+text = "XP: 0"
+
+[node name="manaLabel" type="Label" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 62.0
+offset_right = 75.0
+offset_bottom = 85.0
+scale = Vector2(0.639999, 0.559999)
+text = "MANA: 10"
+
+[node name="healthLabel" type="Label" parent="Camera2D/Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 75.0
+offset_right = 57.0
+offset_bottom = 98.0
+scale = Vector2(0.639999, 0.559999)
+text = "HP: 5"
 
 [node name="boxCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -26,7 +73,6 @@ texture = ExtResource("2_js7ph")
 [node name="SwordTest" parent="Sprite2D" instance=ExtResource("3_tpdek")]
 position = Vector2(-4, -1)
 
-[node name="statController" type="Node2D" parent="."]
-script = ExtResource("4_ghbl2")
+[node name="statController" parent="." groups=["statCon"] instance=ExtResource("4_ghbl2")]
 
 [connection signal="flipped" from="." to="Sprite2D/SwordTest" method="_character_flipped"]

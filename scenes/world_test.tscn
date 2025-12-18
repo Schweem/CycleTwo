@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bovyp4s1u2luk" path="res://prefabs/test_enemy.tscn" id="7_i6uhy"]
 [ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
 [ext_resource type="Texture2D" uid="uid://c2e4upv6u8a28" path="res://assets/sprites/background.png" id="8_voen0"]
-[ext_resource type="Script" uid="uid://dtxn55rj7glwa" path="res://scripts/game_controller.gd" id="9_4bo10"]
+[ext_resource type="PackedScene" uid="uid://dup7slvqhq8ri" path="res://prefabs/game_controller.tscn" id="9_4bo10"]
 [ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1moov"]
@@ -112,5 +112,4 @@ texture = ExtResource("8_voen0")
 region_enabled = true
 region_rect = Rect2(-7.115, 10.165, 1000, 450)
 
-[node name="GameController" type="Node2D" parent="." groups=["gamecontroller"]]
-script = ExtResource("9_4bo10")
+[node name="GameController" parent="." instance=ExtResource("9_4bo10")]

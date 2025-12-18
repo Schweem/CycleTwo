@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://tm62jyktlwo7" path="res://scripts/sword_slash.gd" id="4_qu5qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l7m7y"]
-size = Vector2(7, 13)
+size = Vector2(11.0288, 13)
 
 [sub_resource type="Animation" id="Animation_qu5qp"]
 resource_name = "swing"
@@ -77,7 +77,7 @@ script = ExtResource("4_qu5qp")
 [node name="StaticBody2D" type="Area2D" parent="Slash"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slash/StaticBody2D"]
-position = Vector2(3.5, -1.5)
+position = Vector2(5.51439, -1.5)
 shape = SubResource("RectangleShape2D_l7m7y")
 
 [node name="AnimationTree" type="AnimationPlayer" parent="."]
