@@ -16,14 +16,11 @@ var coyote_time : float = 1.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # on ready, usually children calls
-@onready var baseSprite : Sprite2D = $Sprite2D
+@onready var baseSprite : AnimatedSprite2D = $Sprite2D
 @onready var sword : Sprite2D = $Sprite2D/SwordTest
 @onready var swordPosition : float = sword.swordPosition
 @onready var playerStats : Node2D = $statController
-var gameController : Node2D 
 
-func _ready() -> void:
-	gameController = get_tree().get_first_node_in_group("gamecontroller")
 
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
@@ -74,6 +71,7 @@ func handle_inputs() -> void:
 		sword.position.x = swordPosition
 	# third case to let it linger
 	else:
+		baseSprite.play("idle")
 		baseSprite.flip_h = baseSprite.flip_h
 		sword.position.x = sword.position.x
 		flipped.emit(baseSprite.flip_h)

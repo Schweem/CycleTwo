@@ -1,13 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=11 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
 [ext_resource type="Script" uid="uid://c302pf7vi3ll3" path="res://scripts/uiController.gd" id="2_dwetx"]
-[ext_resource type="Texture2D" uid="uid://dmtockdfhi14o" path="res://assets/sprites/testPlayer.png" id="2_js7ph"]
+[ext_resource type="Texture2D" uid="uid://c5f8wn6tj6il8" path="res://assets/sprites/player/testIdle.png" id="3_dwetx"]
 [ext_resource type="PackedScene" uid="uid://ba67nxdfhgmj1" path="res://prefabs/sword.tscn" id="3_tpdek"]
 [ext_resource type="PackedScene" uid="uid://wyixcnyvwf2y" path="res://prefabs/stat_controller.tscn" id="4_ghbl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
 size = Vector2(10, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yenwa"]
+atlas = ExtResource("3_dwetx")
+region = Rect2(0, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiixa"]
+atlas = ExtResource("3_dwetx")
+region = Rect2(16, 0, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr3r1"]
+atlas = ExtResource("3_dwetx")
+region = Rect2(32, 0, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibnrw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yenwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiixa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr3r1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="playerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_6r27q")
@@ -28,37 +62,37 @@ script = ExtResource("2_dwetx")
 
 [node name="levelLabel" type="Label" parent="Camera2D/Control"]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 62.0
-offset_right = 299.0
-offset_bottom = 85.0
+offset_left = 193.0
+offset_top = 105.0
+offset_right = 268.0
+offset_bottom = 128.0
 scale = Vector2(0.639999, 0.559999)
 text = "Level: 0"
 
 [node name="xpLabel" type="Label" parent="Camera2D/Control"]
 layout_mode = 0
-offset_left = 237.0
-offset_top = 75.0
-offset_right = 295.0
-offset_bottom = 98.0
+offset_left = 194.0
+offset_top = 118.0
+offset_right = 252.0
+offset_bottom = 141.0
 scale = Vector2(0.639999, 0.559999)
 text = "XP: 0"
 
 [node name="manaLabel" type="Label" parent="Camera2D/Control"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 62.0
-offset_right = 75.0
-offset_bottom = 85.0
+offset_left = 199.0
+offset_top = 1.0
+offset_right = 275.0
+offset_bottom = 24.0
 scale = Vector2(0.639999, 0.559999)
 text = "MANA: 10"
 
 [node name="healthLabel" type="Label" parent="Camera2D/Control"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 75.0
-offset_right = 57.0
-offset_bottom = 98.0
+offset_left = 199.0
+offset_top = 14.0
+offset_right = 257.0
+offset_bottom = 37.0
 scale = Vector2(0.639999, 0.559999)
 text = "HP: 5"
 
@@ -66,9 +100,11 @@ text = "HP: 5"
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_puv4i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_js7ph")
+sprite_frames = SubResource("SpriteFrames_ibnrw")
+animation = &"idle"
+frame_progress = 0.25341
 
 [node name="SwordTest" parent="Sprite2D" instance=ExtResource("3_tpdek")]
 position = Vector2(-4, -1)

@@ -3,7 +3,7 @@ extends Node2D
 var active : bool
 var rootPosition : Vector2 = position
 
-var cooldown : float = 1.0
+var cooldown : float = 0.4
 
 @onready var collider : CollisionShape2D = $StaticBody2D/CollisionShape2D
 @onready var swordObject : Sprite2D = get_parent()
