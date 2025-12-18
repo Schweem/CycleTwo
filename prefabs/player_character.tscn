@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=6 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
 [ext_resource type="Texture2D" uid="uid://dmtockdfhi14o" path="res://assets/sprites/testPlayer.png" id="2_js7ph"]
 [ext_resource type="PackedScene" uid="uid://ba67nxdfhgmj1" path="res://prefabs/sword.tscn" id="3_tpdek"]
+[ext_resource type="Script" uid="uid://yn51t1n6er8i" path="res://scripts/stat_controller.gd" id="4_ghbl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
 size = Vector2(10, 17)
@@ -24,5 +25,8 @@ texture = ExtResource("2_js7ph")
 
 [node name="SwordTest" parent="Sprite2D" instance=ExtResource("3_tpdek")]
 position = Vector2(-4, -1)
+
+[node name="statController" type="Node2D" parent="."]
+script = ExtResource("4_ghbl2")
 
 [connection signal="flipped" from="." to="Sprite2D/SwordTest" method="_character_flipped"]

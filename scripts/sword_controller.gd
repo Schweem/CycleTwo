@@ -9,6 +9,7 @@ extends Sprite2D
 
 # attack stuff
 @onready var slashObject = $Slash
+@onready var animationPlayer = $AnimationTree
 
 # these will be cleaned up and improved later
 var attackOffset: Vector2 = Vector2(4.0, -11.0)
@@ -18,9 +19,10 @@ func _ready() -> void:
 	swordPosition = position.x
 	print(baseLoc, offLoc)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
-		attack()
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("attack") and (sheathed == false):
+			attack()
 
 func drawSword() -> void:
 	if sheathed == true:
@@ -28,6 +30,7 @@ func drawSword() -> void:
 		flip_h = true
 		offset = attackOffset
 		sheathed = false
+
 	# TODO : make this better (handle conditions more eleganelty)
 	else:
 		z_index = -1
@@ -61,3 +64,7 @@ func _character_flipped(flag: bool) -> void:
 func melee_contact(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		area.takeDamage()
+
+func levelUp() -> void:
+	print()
+			

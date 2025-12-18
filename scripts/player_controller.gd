@@ -19,7 +19,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var baseSprite : Sprite2D = $Sprite2D
 @onready var sword : Sprite2D = $Sprite2D/SwordTest
 @onready var swordPosition : float = sword.swordPosition
-	
+@onready var playerStats : Node2D = $statController
+var gameController : Node2D 
+
+func _ready() -> void:
+	gameController = get_tree().get_first_node_in_group("gamecontroller")
+
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
 	if !is_on_floor():
@@ -52,7 +57,8 @@ func handle_inputs() -> void:
 	if Input.is_action_just_pressed("draw"):
 		sword.drawSword()
 	
-	# get direction, handle speed and apply it 
+	# get direction, handle speed and apply it
+	# TODO : remove redundant signal calls (ie call it once tie it to sprite flip)
 	var dir = Input.get_axis("left", "right")
 	if dir < 0:
 		baseSprite.flip_h = true
@@ -70,6 +76,7 @@ func handle_inputs() -> void:
 	else:
 		baseSprite.flip_h = baseSprite.flip_h
 		sword.position.x = sword.position.x
+		flipped.emit(baseSprite.flip_h)
 	
 	var speed : float = BASE_SPEED * speed_mult
 	if dir:

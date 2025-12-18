@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=13 format=4 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="2_puv4i"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://crg6jj1qsymnd" path="res://assets/sprites/sampleTiles.png" id="6_4lv6h"]
 [ext_resource type="PackedScene" uid="uid://bovyp4s1u2luk" path="res://prefabs/test_enemy.tscn" id="7_i6uhy"]
 [ext_resource type="Script" uid="uid://dlhgof7ydc8g1" path="res://scripts/toolbox/cannon.gd" id="8_4bo10"]
+[ext_resource type="Texture2D" uid="uid://c2e4upv6u8a28" path="res://assets/sprites/background.png" id="8_voen0"]
+[ext_resource type="Script" uid="uid://dtxn55rj7glwa" path="res://scripts/game_controller.gd" id="9_4bo10"]
 [ext_resource type="PackedScene" uid="uid://sn5nscso06qe" path="res://prefabs/bomb.tscn" id="9_d357a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1moov"]
@@ -95,8 +97,20 @@ shape = SubResource("RectangleShape2D_1moov")
 
 [node name="CollisionTiles" type="TileMapLayer" parent="."]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAiABUAAAAEAAAAAAAiABYAAAABAAQAAAAjABYAAAAFAAIAAAAkABYAAAAFAAIAAAAlABYAAAAFAAIAAAAmABYAAAAFAAIAAAAnABYAAAAFAAIAAAAoABYAAAAGAAIAAAAoABUAAAAFAAUAAAAoABQAAAAFAAUAAAAoABMAAAAFAAUAAAAoABIAAAAFAAQAAAAbABQAAAAAAAEAAAAcABQAAAABAAEAAAAdABQAAAACAAEAAAAUABIAAAAAAAEAAAAVABIAAAABAAEAAAAWABIAAAACAAEAAAAbAA4AAAAAAAEAAAAcAA4AAAABAAEAAAAdAA4AAAABAAEAAAAeAA4AAAABAAEAAAAfAA4AAAABAAEAAAAgAA4AAAABAAEAAAAhAA4AAAABAAEAAAAiAA4AAAABAAEAAAAjAA4AAAABAAEAAAAkAA4AAAABAAEAAAAlAA4AAAACAAEAAAApABIAAAAGAAQAAAApABMAAAAGAAUAAAApABQAAAAGAAUAAAApABUAAAAGAAUAAAApABYAAAAEAAIAAAAqABYAAAAFAAIAAAArABYAAAAFAAIAAAAsABYAAAAFAAIAAAAtABYAAAAFAAIAAAAuABYAAAAFAAIAAAAvABYAAAAFAAIAAAAwABUAAAAGAAAAAAAwABYAAAAGAAIAAAAqABQAAAAEAAAAAAAqABUAAAAEAAEAAAAeABgAAAAAAAEAAAAfABgAAAABAAEAAAAgABgAAAACAAEAAAAyABcAAAAAAAEAAAAzABcAAAABAAEAAAA0ABcAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAiABUAAAAEAAAAAAAiABYAAAABAAQAAAAjABYAAAAFAAIAAAAkABYAAAAFAAIAAAAlABYAAAAFAAIAAAAmABYAAAAFAAIAAAAnABYAAAAFAAIAAAAoABYAAAAGAAIAAAAoABUAAAAFAAUAAAAoABQAAAAFAAUAAAAoABMAAAAFAAUAAAAoABIAAAAFAAQAAAAbABQAAAAAAAEAAAAcABQAAAABAAEAAAAdABQAAAACAAEAAAAUABIAAAAAAAEAAAAVABIAAAABAAEAAAAWABIAAAACAAEAAAAbAA4AAAAAAAEAAAAcAA4AAAABAAEAAAAdAA4AAAABAAEAAAAeAA4AAAABAAEAAAAfAA4AAAABAAEAAAAgAA4AAAABAAEAAAAhAA4AAAABAAEAAAAiAA4AAAABAAEAAAAjAA4AAAABAAEAAAAkAA4AAAABAAEAAAAlAA4AAAACAAEAAAAeABgAAAAAAAEAAAAfABgAAAABAAEAAAAgABgAAAACAAEAAAAyABcAAAAAAAEAAAAzABcAAAABAAEAAAA0ABcAAAACAAEAAAAqABQAAAAEAAAAAAAqABUAAAAEAAEAAAAqABYAAAAFAAIAAAArABYAAAAFAAIAAAAsABYAAAAFAAIAAAAtABYAAAAFAAIAAAAuABYAAAAFAAIAAAAvABYAAAAFAAIAAAAwABYAAAAGAAIAAAApABIAAAAGAAQAAAApABMAAAAGAAUAAAApABQAAAAGAAUAAAApABUAAAAGAAUAAAApABYAAAAEAAIAAAAwABUAAAAGAAAAAAA=")
 tile_set = SubResource("TileSet_voen0")
 
 [node name="testEnemy" parent="." instance=ExtResource("7_i6uhy")]
 position = Vector2(457, 311)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(570, 248)
+texture = ExtResource("8_voen0")
+region_enabled = true
+region_rect = Rect2(-7.115, 10.165, 1000, 450)
+
+[node name="GameController" type="Node2D" parent="." groups=["gamecontroller"]]
+script = ExtResource("9_4bo10")

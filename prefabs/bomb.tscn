@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://sn5nscso06qe"]
+[gd_scene load_steps=5 format=3 uid="uid://sn5nscso06qe"]
 
 [ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="1_x5b75"]
 [ext_resource type="Script" uid="uid://ct1yq3kbod76" path="res://scripts/test_enemy.gd" id="1_x6isg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6uhy"]
 radius = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6isg"]
+size = Vector2(18, 18)
 
 [node name="RigidBody2D" type="RigidBody2D" groups=["enemy"]]
 mass = 0.06
@@ -18,3 +21,10 @@ shape = SubResource("CircleShape2D_i6uhy")
 position = Vector2(0, -5.96046e-08)
 scale = Vector2(0.226562, 0.210938)
 texture = ExtResource("1_x5b75")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+script = ExtResource("1_x6isg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_x6isg")
