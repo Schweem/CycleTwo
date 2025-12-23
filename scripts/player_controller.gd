@@ -51,6 +51,38 @@ func _physics_process(delta: float) -> void:
 
 # Simple helper to keep physics process cleaner
 func handle_inputs() -> void:
+	if Input.is_action_just_pressed("draw"):
+		sword.drawSword()
+	
+	# get direction, handle speed and apply it
+	# TODO : remove redundant signal calls (ie call it once tie it to sprite flip)
+	var dir = Input.get_axis("left", "right")
+	if !is_on_wall_only():
+		if dir < 0:
+			baseSprite.flip_h = true
+			flipped.emit(true)
+
+			sword.flip_v = true
+			sword.position.x = abs(swordPosition)
+		elif dir > 0:
+			baseSprite.flip_h = false
+			flipped.emit(false)
+
+			sword.flip_v = false
+			sword.position.x = swordPosition
+		# third case to let it linger
+		else:
+			baseSprite.play("idle")
+			baseSprite.flip_h = baseSprite.flip_h
+			sword.position.x = sword.position.x
+			flipped.emit(baseSprite.flip_h)
+	
+	var speed : float = BASE_SPEED * speed_mult
+	if dir:
+		velocity.x = dir * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+
 	# simple jump, input handling 
 	if Input.is_action_just_pressed("jump"):
 		# is_on_floor()
@@ -59,8 +91,8 @@ func handle_inputs() -> void:
 			velocity.y = JUMP_SPEED
 	
 		if is_on_wall_only() and (walljump == false):
-			velocity.y = JUMP_SPEED * 1.2
-			velocity.x = -2
+			#velocity.y = JUMP_SPEED * 0.8
+			velocity = Vector2(-600, JUMP_SPEED * 0.8)
 			walljump = true
 
 	# variable jump height
@@ -69,33 +101,3 @@ func handle_inputs() -> void:
 			velocity.y = velocity.y / jump_res
 			jumpCancelled = true
 
-	if Input.is_action_just_pressed("draw"):
-		sword.drawSword()
-	
-	# get direction, handle speed and apply it
-	# TODO : remove redundant signal calls (ie call it once tie it to sprite flip)
-	var dir = Input.get_axis("left", "right")
-	if dir < 0:
-		baseSprite.flip_h = true
-		flipped.emit(true)
-
-		sword.flip_v = true
-		sword.position.x = abs(swordPosition)
-	elif dir > 0:
-		baseSprite.flip_h = false
-		flipped.emit(false)
-
-		sword.flip_v = false
-		sword.position.x = swordPosition
-	# third case to let it linger
-	else:
-		baseSprite.play("idle")
-		baseSprite.flip_h = baseSprite.flip_h
-		sword.position.x = sword.position.x
-		flipped.emit(baseSprite.flip_h)
-	
-	var speed : float = BASE_SPEED * speed_mult
-	if dir:
-		velocity.x = dir * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
