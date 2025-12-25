@@ -111,4 +111,7 @@ position = Vector2(-4, -1)
 
 [node name="statController" parent="." groups=["statCon"] instance=ExtResource("4_ghbl2")]
 
+[node name="floorCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+
 [connection signal="flipped" from="." to="Sprite2D/SwordTest" method="_character_flipped"]

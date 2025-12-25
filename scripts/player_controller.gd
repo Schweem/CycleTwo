@@ -5,6 +5,7 @@ signal flipped(flag : bool)
 # constants
 const BASE_SPEED : float = 7500.0
 const JUMP_SPEED : float = -20000.0
+const MAX_FALL_SPEED : float = 225
 
 # regular vars
 var speed_mult : float = 1.0
@@ -12,7 +13,10 @@ var speed_mult : float = 1.0
 # variable jump height stuff
 var jump_res : float = 3.0
 var coyote_time : float = 1.0
-var jump_buffer : float = 1.0
+
+var jump_flag : bool = false
+var stored_jump : bool = false
+@onready var jumpCast : RayCast2D = $floorCheck
 
 var walljump : bool = false
 var jumpCancelled : bool = false
@@ -30,12 +34,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
 	if !is_on_floor():
+
+		if velocity.y > MAX_FALL_SPEED:
+			velocity.y = MAX_FALL_SPEED
+
 		if coyote_time > 0:
 			coyote_time -= 0.1
 		velocity.y += gravity * delta
-
-		if jump_buffer > 0:
-			jump_buffer -= 0.1
 	else:
 		# reset all the jump stuff
 		# state machines would be sick right 
@@ -47,6 +52,11 @@ func _physics_process(delta: float) -> void:
 
 		if coyote_time < 1.0:
 			coyote_time += 0.1
+
+		if stored_jump:
+			print("stored jump")
+			velocity.y = JUMP_SPEED * delta
+			stored_jump = false
 
 	# Input controller handler
 	handle_inputs(delta)
@@ -93,6 +103,9 @@ func handle_inputs(_delta : float) -> void:
 		if coyote_time > 0:
 			coyote_time = 0
 			velocity.y = JUMP_SPEED * _delta
+
+		if jumpCast.is_colliding() and (is_on_floor() == false):
+			stored_jump = true
 	
 		if is_on_wall_only() and (walljump == false):
 			#velocity.y = JUMP_SPEED * 0.8
@@ -104,4 +117,3 @@ func handle_inputs(_delta : float) -> void:
 		if Input.is_action_just_released("jump") and (jumpCancelled == false):
 			velocity.y = velocity.y / jump_res
 			jumpCancelled = true
-
