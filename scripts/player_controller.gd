@@ -8,6 +8,7 @@ const JUMP_SPEED : float = -20000.0
 const MAX_FALL_SPEED : float = 225
 
 # regular vars
+var climb_speed : float = 5000.0
 var speed_mult : float = 1.0
 
 # variable jump height stuff
@@ -17,6 +18,11 @@ var coyote_time : float = 1.0
 var jump_flag : bool = false
 var stored_jump : bool = false
 @onready var jumpCast : RayCast2D = $floorCheck
+
+# Ladder stuff
+var is_climbing : bool = false
+var can_climb : bool = false
+var last_ladder
 
 var wall_cling : bool = false
 var walljump : bool = false
@@ -73,13 +79,32 @@ func _physics_process(delta: float) -> void:
 
 # Simple helper to keep physics process cleaner
 func handle_inputs(_delta : float) -> void:
-	if Input.is_action_just_pressed("draw"):
-		sword.drawSword()
-	
 	# get direction, handle speed and apply it
 	# TODO : remove redundant signal calls (ie call it once tie it to sprite flip)
 	var dir = Input.get_axis("left", "right")
+	var vert_dir = Input.get_axis("up", "down")
 
+	if Input.is_action_just_pressed("interact"):
+		if (is_climbing == false) and (can_climb == true):
+			is_climbing = true
+		elif (is_climbing == true):
+			is_climbing = false
+			can_climb = true
+		else:
+			pass
+
+	if (is_climbing == true):
+		gravity = 0 
+		if vert_dir:
+			velocity.y = vert_dir * climb_speed * _delta
+		else:
+			velocity.y = move_toward(velocity.y, 0, climb_speed) * _delta
+	else:
+		gravity = base_grav
+
+	if Input.is_action_just_pressed("draw"):
+		sword.drawSword()
+	
 	# walking stuff
 	if !is_on_wall_only():
 		if dir < 0:
@@ -102,14 +127,14 @@ func handle_inputs(_delta : float) -> void:
 			flipped.emit(baseSprite.flip_h)
 	
 	var speed : float = BASE_SPEED * speed_mult
-	if dir:
+	if dir and is_climbing == false:
 		velocity.x = dir * speed * _delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)  * _delta
 
 	# wall cling
-	if velocity.y > 0 and is_on_wall():
-		if dir != 0:
+	if (velocity.y > 0) and is_on_wall() and (is_climbing == false):
+		if dir != 0 and is_climbing == false:
 			wall_cling = true
 		else:
 			wall_cling = false
@@ -118,7 +143,7 @@ func handle_inputs(_delta : float) -> void:
 		
 
 	# simple jump, input handling 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and (is_climbing == false):
 		# is_on_floor()
 		if coyote_time > 0:
 			coyote_time = 0
@@ -138,11 +163,18 @@ func handle_inputs(_delta : float) -> void:
 			velocity.y = velocity.y / jump_res
 			jumpCancelled = true
 
-func interaction_end(body:Node2D) -> void:
-	if body.is_in_group("ladder"):
-		uiController.toggle_interaction()
-
 func interaction_start(body:Node2D) -> void:
 	if body.is_in_group("ladder"):
+		can_climb = true
 		uiController.toggle_interaction()
-		print("yay")
+	else:
+		pass
+
+func interaction_end(body:Node2D) -> void:
+	uiController.toggle_interaction()
+	
+	if body.is_in_group("ladder"):
+		can_climb = false
+		is_climbing = false
+	else:
+		pass

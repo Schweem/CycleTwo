@@ -45,6 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yenwa"]
+size = Vector2(6, 15)
 
 [node name="playerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_6r27q")
@@ -79,6 +80,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interact_radius"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_yenwa")
 
 [connection signal="flipped" from="." to="Sprite2D/SwordTest" method="_character_flipped"]

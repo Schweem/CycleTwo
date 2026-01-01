@@ -13,6 +13,7 @@ offset_bottom = 73.0
 script = ExtResource("1_lojgo")
 
 [node name="interaction_pannel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 122.0
 offset_top = 74.0
 offset_right = 170.0

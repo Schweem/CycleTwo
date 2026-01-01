@@ -10,7 +10,7 @@ size = Vector2(7, 19)
 texture_filter = 1
 texture = ExtResource("1_8hgsy")
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "npc"]]
 script = ExtResource("2_8hgsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
