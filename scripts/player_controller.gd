@@ -18,11 +18,13 @@ var jump_flag : bool = false
 var stored_jump : bool = false
 @onready var jumpCast : RayCast2D = $floorCheck
 
+var wall_cling : bool = false
 var walljump : bool = false
 var jumpCancelled : bool = false
 
 # gravity from engine 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var base_grav = gravity
 
 # on ready, usually children calls
 @onready var baseSprite : AnimatedSprite2D = $Sprite2D
@@ -58,6 +60,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_SPEED * delta
 			stored_jump = false
 
+	if wall_cling == true:
+		gravity = gravity / 2
+	else:
+		gravity = base_grav
+
 	# Input controller handler
 	handle_inputs(delta)
 	# Character body fun for applying motion
@@ -71,6 +78,8 @@ func handle_inputs(_delta : float) -> void:
 	# get direction, handle speed and apply it
 	# TODO : remove redundant signal calls (ie call it once tie it to sprite flip)
 	var dir = Input.get_axis("left", "right")
+
+	# walking stuff
 	if !is_on_wall_only():
 		if dir < 0:
 			baseSprite.flip_h = true
@@ -96,6 +105,16 @@ func handle_inputs(_delta : float) -> void:
 		velocity.x = dir * speed * _delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)  * _delta
+
+	# wall cling
+	if velocity.y > 0 and is_on_wall():
+		if dir != 0:
+			wall_cling = true
+		else:
+			wall_cling = false
+	else:
+		wall_cling = false
+		
 
 	# simple jump, input handling 
 	if Input.is_action_just_pressed("jump"):

@@ -4,17 +4,17 @@ var move_speed : float = 0.75
 var camera_distance : int = 20
 var down_set : float = 1.2
 
+@onready var player_obj : CharacterBody2D = get_parent()
+
 func _process(delta: float) -> void:
-    if Input.is_action_pressed("up"):
+    if Input.is_action_pressed("up") and player_obj.is_on_floor():
         look_up(delta)
-    elif Input.is_action_pressed("down"):
+    elif Input.is_action_pressed("down") and player_obj.is_on_floor():
         look_down(delta)
     else:
         reset_view(delta)
 
-
 func reset_view(_delta : float) -> void:
-    #print("reset")
     if offset.y > 0:
         while offset.y > 0:
             offset.y -= 1
@@ -25,11 +25,9 @@ func reset_view(_delta : float) -> void:
             break
 
 func look_up(_delta : float) -> void:
-    #print("up")
     if offset.y > -camera_distance:
         offset.y -= move_speed
 
 func look_down(_delta : float) -> void:
-    #print("down")
     if offset.y < (camera_distance * down_set):
         offset.y += move_speed

@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
-[ext_resource type="Script" uid="uid://c302pf7vi3ll3" path="res://scripts/uiController.gd" id="2_dwetx"]
 [ext_resource type="Script" uid="uid://bgd36dyjs6er3" path="res://scripts/cam_controller.gd" id="2_yenwa"]
 [ext_resource type="Texture2D" uid="uid://c5f8wn6tj6il8" path="res://assets/sprites/player/testIdle.png" id="3_dwetx"]
 [ext_resource type="PackedScene" uid="uid://ba67nxdfhgmj1" path="res://prefabs/sword.tscn" id="3_tpdek"]
+[ext_resource type="PackedScene" uid="uid://bc343nmadfwd5" path="res://prefabs/ui_controller.tscn" id="3_yenwa"]
 [ext_resource type="PackedScene" uid="uid://wyixcnyvwf2y" path="res://prefabs/stat_controller.tscn" id="4_ghbl2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
@@ -52,51 +52,7 @@ position = Vector2(0, -28)
 zoom = Vector2(4.1, 4.1)
 script = ExtResource("2_yenwa")
 
-[node name="Control" type="Control" parent="Camera2D"]
-z_index = 5
-layout_mode = 3
-anchors_preset = 0
-offset_left = -134.0
-offset_top = -73.0
-offset_right = 134.0
-offset_bottom = 73.0
-script = ExtResource("2_dwetx")
-
-[node name="levelLabel" type="Label" parent="Camera2D/Control"]
-layout_mode = 0
-offset_left = 193.0
-offset_top = 105.0
-offset_right = 268.0
-offset_bottom = 128.0
-scale = Vector2(0.639999, 0.559999)
-text = "Level: 0"
-
-[node name="xpLabel" type="Label" parent="Camera2D/Control"]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 118.0
-offset_right = 252.0
-offset_bottom = 141.0
-scale = Vector2(0.639999, 0.559999)
-text = "XP: 0"
-
-[node name="manaLabel" type="Label" parent="Camera2D/Control"]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 1.0
-offset_right = 275.0
-offset_bottom = 24.0
-scale = Vector2(0.639999, 0.559999)
-text = "MANA: 10"
-
-[node name="healthLabel" type="Label" parent="Camera2D/Control"]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 14.0
-offset_right = 257.0
-offset_bottom = 37.0
-scale = Vector2(0.639999, 0.559999)
-text = "HP: 5"
+[node name="uiMananger" parent="Camera2D" instance=ExtResource("3_yenwa")]
 
 [node name="boxCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

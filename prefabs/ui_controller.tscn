@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc343nmadfwd5"]
+
+[ext_resource type="Script" uid="uid://c302pf7vi3ll3" path="res://scripts/uiController.gd" id="1_lojgo"]
+
+[node name="Control" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_left = -134.0
+offset_top = -73.0
+offset_right = 134.0
+offset_bottom = 73.0
+script = ExtResource("1_lojgo")
+
+[node name="main_pannel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 2.0
+offset_right = 282.0
+offset_bottom = 35.0
+scale = Vector2(0.599999, 0.599999)
+
+[node name="manaLabel" type="Label" parent="main_pannel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 83.0
+offset_bottom = 26.0
+scale = Vector2(0.639999, 0.559999)
+text = "MANA: 10"
+
+[node name="healthLabel" type="Label" parent="main_pannel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 16.0
+offset_right = 65.0
+offset_bottom = 39.0
+scale = Vector2(0.639999, 0.559999)
+text = "HP: 5"
+
+[node name="level_pannel" type="Panel" parent="."]
+offset_left = 199.0
+offset_top = 106.0
+offset_right = 292.0
+offset_bottom = 139.0
+scale = Vector2(0.599999, 0.599999)
+
+[node name="xpLabel" type="Label" parent="level_pannel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 16.0
+offset_right = 65.0
+offset_bottom = 39.0
+scale = Vector2(0.639999, 0.559999)
+theme_override_font_sizes/font_size = 16
+text = "XP: 0"
+
+[node name="levelLabel" type="Label" parent="level_pannel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 26.0
+scale = Vector2(0.639999, 0.559999)
+theme_override_font_sizes/font_size = 16
+text = "Level: 0"

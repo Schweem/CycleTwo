@@ -1,10 +1,10 @@
 extends Control
 
-@onready var xpLabel : Label = $xpLabel
-@onready var levelLabel : Label = $levelLabel
+@onready var xpLabel : Label = $level_pannel/xpLabel
+@onready var levelLabel : Label = $level_pannel/levelLabel
 
-@onready var manaLabel : Label = $manaLabel
-@onready var healthLabel : Label = $healthLabel
+@onready var manaLabel : Label = $main_pannel/manaLabel
+@onready var healthLabel : Label = $main_pannel/healthLabel
 
 @onready var statController : Node2D = get_tree().get_first_node_in_group("statCon")
 
