@@ -80,9 +80,11 @@ sources/0 = SubResource("TileSetAtlasSource_4bo10")
 z_index = 2
 position = Vector2(577, 343)
 
-[node name="gameManager" parent="playerCharacter" instance=ExtResource("4_63fu1")]
-position = Vector2(-130, -101)
-scale = Vector2(0.25, 0.25)
+[node name="CanvasLayer" type="CanvasLayer" parent="playerCharacter"]
+
+[node name="gameManager" parent="playerCharacter/CanvasLayer" instance=ExtResource("4_63fu1")]
+position = Vector2(41, 35)
+scale = Vector2(1.23476, 1.23476)
 
 [node name="cannon" type="Node2D" parent="."]
 position = Vector2(206, 240)

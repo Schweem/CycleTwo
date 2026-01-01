@@ -1,13 +1,13 @@
 extends Control
 
-@onready var xpLabel : Label = $level_pannel/xpLabel
-@onready var levelLabel : Label = $level_pannel/levelLabel
+@onready var xpLabel : Label = $CanvasLayer/level_pannel/xpLabel
+@onready var levelLabel : Label = $CanvasLayer/level_pannel/levelLabel
 
-@onready var manaLabel : Label = $main_pannel/manaLabel
-@onready var healthLabel : Label = $main_pannel/healthLabel
+@onready var manaLabel : Label = $CanvasLayer/main_pannel/manaLabel
+@onready var healthLabel : Label = $CanvasLayer/main_pannel/healthLabel
 
-@onready var interaction_pannel : Panel = $interaction_pannel 
-@onready var interaction_text : Label = $interaction_pannel/pressE
+@onready var interaction_pannel : Panel = $CanvasLayer/interaction_pannel 
+@onready var interaction_text : Label = $CanvasLayer/interaction_pannel/pressE
 
 @onready var statController : Node2D = get_tree().get_first_node_in_group("statCon")
 

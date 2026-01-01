@@ -12,15 +12,16 @@ offset_right = 134.0
 offset_bottom = 73.0
 script = ExtResource("1_lojgo")
 
-[node name="interaction_pannel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 122.0
-offset_top = 74.0
-offset_right = 170.0
-offset_bottom = 96.0
-scale = Vector2(0.599999, 0.599999)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="pressE" type="Label" parent="interaction_pannel"]
+[node name="interaction_pannel" type="Panel" parent="CanvasLayer"]
+offset_left = 628.0
+offset_top = 388.0
+offset_right = 676.0
+offset_bottom = 410.0
+scale = Vector2(1.76, 1.76)
+
+[node name="pressE" type="Label" parent="CanvasLayer/interaction_pannel"]
 layout_mode = 0
 offset_left = 3.33333
 offset_top = 5.00001
@@ -30,15 +31,14 @@ scale = Vector2(0.639999, 0.559999)
 theme_override_font_sizes/font_size = 16
 text = "Press 'E'"
 
-[node name="main_pannel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 211.0
-offset_top = 2.0
-offset_right = 282.0
-offset_bottom = 35.0
-scale = Vector2(0.599999, 0.599999)
+[node name="main_pannel" type="Panel" parent="CanvasLayer"]
+offset_left = 929.0
+offset_top = 79.0
+offset_right = 1000.0
+offset_bottom = 112.0
+scale = Vector2(2.28, 2.28)
 
-[node name="manaLabel" type="Label" parent="main_pannel"]
+[node name="manaLabel" type="Label" parent="CanvasLayer/main_pannel"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 3.0
@@ -47,7 +47,7 @@ offset_bottom = 26.0
 scale = Vector2(0.639999, 0.559999)
 text = "MANA: 10"
 
-[node name="healthLabel" type="Label" parent="main_pannel"]
+[node name="healthLabel" type="Label" parent="CanvasLayer/main_pannel"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 16.0
@@ -56,15 +56,14 @@ offset_bottom = 39.0
 scale = Vector2(0.639999, 0.559999)
 text = "HP: 5"
 
-[node name="level_pannel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 199.0
-offset_top = 106.0
-offset_right = 292.0
-offset_bottom = 139.0
-scale = Vector2(0.599999, 0.599999)
+[node name="level_pannel" type="Panel" parent="CanvasLayer"]
+offset_left = 882.0
+offset_top = 498.0
+offset_right = 975.0
+offset_bottom = 531.0
+scale = Vector2(2.35364, 2.35364)
 
-[node name="xpLabel" type="Label" parent="level_pannel"]
+[node name="xpLabel" type="Label" parent="CanvasLayer/level_pannel"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 16.0
@@ -74,7 +73,7 @@ scale = Vector2(0.639999, 0.559999)
 theme_override_font_sizes/font_size = 16
 text = "XP: 0"
 
-[node name="levelLabel" type="Label" parent="level_pannel"]
+[node name="levelLabel" type="Label" parent="CanvasLayer/level_pannel"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=14 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
 [ext_resource type="Script" uid="uid://bgd36dyjs6er3" path="res://scripts/cam_controller.gd" id="2_yenwa"]
@@ -7,8 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bc343nmadfwd5" path="res://prefabs/ui_controller.tscn" id="3_yenwa"]
 [ext_resource type="PackedScene" uid="uid://wyixcnyvwf2y" path="res://prefabs/stat_controller.tscn" id="4_ghbl2"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yenwa"]
+radius = 5.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
-size = Vector2(10, 17)
+size = Vector2(8, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yenwa"]
 atlas = ExtResource("3_dwetx")
@@ -53,12 +56,19 @@ script = ExtResource("1_6r27q")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -28)
 zoom = Vector2(4.1, 4.1)
+position_smoothing_enabled = true
 script = ExtResource("2_yenwa")
 
-[node name="uiMananger" parent="Camera2D" instance=ExtResource("3_yenwa")]
+[node name="uiMananger" parent="." instance=ExtResource("3_yenwa")]
+offset_top = -101.0
+offset_bottom = 45.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_yenwa")
 
 [node name="boxCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_puv4i")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

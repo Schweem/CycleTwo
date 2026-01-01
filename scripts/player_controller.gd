@@ -38,7 +38,7 @@ var base_grav = gravity
 @onready var swordPosition : float = sword.swordPosition
 @onready var playerStats : Node2D = $statController
 
-@onready var uiController = $Camera2D/uiMananger
+@onready var uiController = $uiMananger
 
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
@@ -156,6 +156,9 @@ func handle_inputs(_delta : float) -> void:
 			#velocity.y = JUMP_SPEED * 0.8
 			velocity = Vector2(-600, JUMP_SPEED * 0.8) * _delta
 			walljump = true
+	
+	if Input.is_action_just_pressed("jump") and (is_climbing == true):
+		is_climbing = false
 
 	# variable jump height
 	if !is_on_floor():
