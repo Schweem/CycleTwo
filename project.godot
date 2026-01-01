@@ -20,6 +20,7 @@ config/icon="res://assets/icon.svg"
 
 enemy=""
 statCon=""
+ladder=""
 
 [input]
 

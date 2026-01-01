@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btppsxypre06b"]
+[gd_scene load_steps=13 format=3 uid="uid://btppsxypre06b"]
 
 [ext_resource type="Script" uid="uid://dl6bfkun3w4gq" path="res://scripts/player_controller.gd" id="1_6r27q"]
 [ext_resource type="Script" uid="uid://bgd36dyjs6er3" path="res://scripts/cam_controller.gd" id="2_yenwa"]
@@ -44,6 +44,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yenwa"]
+
 [node name="playerCharacter" type="CharacterBody2D"]
 script = ExtResource("1_6r27q")
 
@@ -72,4 +74,13 @@ position = Vector2(-4, -1)
 [node name="floorCheck" type="RayCast2D" parent="."]
 target_position = Vector2(0, 24)
 
+[node name="interact_radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact_radius"]
+shape = SubResource("RectangleShape2D_yenwa")
+
 [connection signal="flipped" from="." to="Sprite2D/SwordTest" method="_character_flipped"]
+[connection signal="body_entered" from="interact_radius" to="." method="interaction_start"]
+[connection signal="body_exited" from="interact_radius" to="." method="interaction_end"]

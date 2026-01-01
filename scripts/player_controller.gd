@@ -32,6 +32,7 @@ var base_grav = gravity
 @onready var swordPosition : float = sword.swordPosition
 @onready var playerStats : Node2D = $statController
 
+@onready var uiController = $Camera2D/uiMananger
 
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
@@ -136,3 +137,12 @@ func handle_inputs(_delta : float) -> void:
 		if Input.is_action_just_released("jump") and (jumpCancelled == false):
 			velocity.y = velocity.y / jump_res
 			jumpCancelled = true
+
+func interaction_end(body:Node2D) -> void:
+	if body.is_in_group("ladder"):
+		uiController.toggle_interaction()
+
+func interaction_start(body:Node2D) -> void:
+	if body.is_in_group("ladder"):
+		uiController.toggle_interaction()
+		print("yay")
