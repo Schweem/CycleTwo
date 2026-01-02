@@ -62,9 +62,14 @@ func _character_flipped(flag: bool) -> void:
 			offset = Vector2(0,0)
 
 func melee_contact(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
-		area.takeDamage()
+	#if area.is_in_group("enemy"):
+	#	area.takeDamage()
+	pass
 
 func levelUp() -> void:
 	print()
 			
+
+func body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		body.takeDamage()

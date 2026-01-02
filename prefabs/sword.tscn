@@ -87,3 +87,4 @@ libraries = {
 speed_scale = 10.0
 
 [connection signal="area_entered" from="Slash/StaticBody2D" to="." method="melee_contact"]
+[connection signal="body_entered" from="Slash/StaticBody2D" to="." method="body_entered"]

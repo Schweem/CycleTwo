@@ -9,6 +9,8 @@ var _timer: Timer
 var bombCount : int = 0
 @export var maxBombs : int = 10
 
+var bombList : Array = []
+
 # Internal timer
 
 # ---------------------------------------------------------------------
@@ -45,6 +47,7 @@ func _fire_projectile() -> void:
 	if bombCount < maxBombs:
 		# Instance projectile
 		var projectile := projectile_scene.instantiate()
+		bombList.append({projectile : bombCount})
 
 		# Attach to scene
 		get_tree().current_scene.add_child(projectile)
@@ -64,6 +67,7 @@ func _fire_projectile() -> void:
 		if bombCount < maxBombs + 2:
 			bombCount += 1
 			print("Max bombs reached")
+			print(bombList)
 		else:
 			pass
 

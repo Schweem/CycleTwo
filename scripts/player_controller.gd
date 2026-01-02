@@ -4,7 +4,7 @@ signal flipped(flag : bool)
 
 # constants
 const BASE_SPEED : float = 7500.0
-const JUMP_SPEED : float = -20000.0
+const JUMP_SPEED : float = -17000.0
 const MAX_FALL_SPEED : float = 225
 
 # regular vars
@@ -40,10 +40,12 @@ var base_grav = gravity
 
 @onready var uiController = $uiMananger
 
+func _ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	# basic floor checks 
 	if !is_on_floor():
-
 		if velocity.y > MAX_FALL_SPEED:
 			velocity.y = MAX_FALL_SPEED
 
@@ -69,6 +71,7 @@ func _physics_process(delta: float) -> void:
 
 	if wall_cling == true:
 		gravity = gravity / 2
+		print(gravity)
 	else:
 		gravity = base_grav
 
@@ -134,7 +137,7 @@ func handle_inputs(_delta : float) -> void:
 
 	# wall cling
 	if (velocity.y > 0) and is_on_wall() and (is_climbing == false):
-		if dir != 0 and is_climbing == false:
+		if dir and is_climbing == false:
 			wall_cling = true
 		else:
 			wall_cling = false

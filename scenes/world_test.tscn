@@ -105,7 +105,7 @@ tile_map_data = PackedByteArray("AAAmABUAAAAAAAAAAAAmABQAAAAAAAAAAAAmABMAAAAAAAA
 tile_set = SubResource("TileSet_d357a")
 
 [node name="testEnemy" parent="." instance=ExtResource("7_i6uhy")]
-position = Vector2(457, 311)
+position = Vector2(556, 303)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

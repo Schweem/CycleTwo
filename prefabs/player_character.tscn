@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://wyixcnyvwf2y" path="res://prefabs/stat_controller.tscn" id="4_ghbl2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yenwa"]
-radius = 5.0
+radius = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_puv4i"]
 size = Vector2(8, 14)
@@ -64,7 +64,7 @@ offset_top = -101.0
 offset_bottom = 45.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_yenwa")
 
 [node name="boxCollider" type="CollisionShape2D" parent="."]
