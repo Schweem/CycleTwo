@@ -22,6 +22,8 @@ enemy=""
 statCon=""
 ladder=""
 npc=""
+overlord=""
+player=""
 
 [input]
 

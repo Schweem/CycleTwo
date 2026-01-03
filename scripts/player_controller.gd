@@ -122,6 +122,7 @@ func handle_inputs(_delta : float) -> void:
 
 			sword.flip_v = false
 			sword.position.x = swordPosition
+			
 		# third case to let it linger
 		else:
 			baseSprite.play("idle")

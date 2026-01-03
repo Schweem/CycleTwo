@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx4d0b8unqsu8"]
+
+[ext_resource type="Script" uid="uid://bgmhkg5wdkosl" path="res://scripts/enemy_man.gd" id="1_1m6co"]
+[ext_resource type="PackedScene" uid="uid://bovyp4s1u2luk" path="res://prefabs/test_enemy.tscn" id="2_nvivk"]
+
+[node name="overlord" type="Node2D" groups=["overlord"]]
+script = ExtResource("1_1m6co")
+enemy_scene = ExtResource("2_nvivk")
