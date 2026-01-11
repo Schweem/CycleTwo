@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=19 format=4 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="PackedScene" uid="uid://bx4d0b8unqsu8" path="res://prefabs/overlord.tscn" id="3_voen0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dfitwoi84sd2t" path="res://assets/sprites/garfield.png" id="10_d357a"]
 [ext_resource type="Texture2D" uid="uid://cqknapylg7rws" path="res://assets/sprites/garfield1.png" id="11_6qtqi"]
 [ext_resource type="Script" uid="uid://drup4tjff5gqt" path="res://scripts/gnome_manager.gd" id="12_c6qvj"]
+[ext_resource type="Texture2D" uid="uid://bpsmd04knrfsn" path="res://assets/sprites/cyclops.png" id="13_q53c7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6uhy"]
 texture = ExtResource("6_4lv6h")
@@ -117,7 +118,7 @@ animations = [{
 
 [node name="playerCharacter" parent="." instance=ExtResource("1_7mhm3")]
 z_index = 2
-position = Vector2(577, 343)
+position = Vector2(599, 343)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="playerCharacter"]
 
@@ -161,6 +162,11 @@ texture = ExtResource("9_d357a")
 texture_filter = 1
 position = Vector2(560, 342)
 sprite_frames = SubResource("SpriteFrames_c6qvj")
-frame_progress = 0.00523657
+frame_progress = 0.828516
 speed_scale = 0.75
 script = ExtResource("12_c6qvj")
+
+[node name="Cyclops" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(455, 376)
+texture = ExtResource("13_q53c7")
