@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc343nmadfwd5"]
+[gd_scene load_steps=3 format=3 uid="uid://bc343nmadfwd5"]
 
 [ext_resource type="Script" uid="uid://c302pf7vi3ll3" path="res://scripts/uiController.gd" id="1_lojgo"]
+[ext_resource type="Texture2D" uid="uid://cg2qnh6h001o3" path="res://assets/icon.svg" id="2_a0ohu"]
 
 [node name="Control" type="Control"]
 z_index = 5
@@ -82,3 +83,24 @@ offset_bottom = 26.0
 scale = Vector2(0.639999, 0.559999)
 theme_override_font_sizes/font_size = 16
 text = "Level: 0"
+
+[node name="talkBox" type="Panel" parent="CanvasLayer"]
+offset_left = 197.0
+offset_top = 452.0
+offset_right = 861.0
+offset_bottom = 627.0
+
+[node name="Label" type="Label" parent="CanvasLayer/talkBox"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 8.0
+offset_right = 655.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 26
+text = "test"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/talkBox"]
+visible = false
+position = Vector2(53, 89.5)
+scale = Vector2(0.6875, 1.14844)
+texture = ExtResource("2_a0ohu")

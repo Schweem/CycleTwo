@@ -28,6 +28,8 @@ var wall_cling : bool = false
 var walljump : bool = false
 var jumpCancelled : bool = false
 
+var talking : bool = false
+
 # gravity from engine 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var base_grav = gravity
@@ -44,6 +46,9 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if uiController.talk_text.visible == true:
+		talking = true
+
 	# basic floor checks 
 	if !is_on_floor():
 		if velocity.y > MAX_FALL_SPEED:
@@ -110,13 +115,13 @@ func handle_inputs(_delta : float) -> void:
 	
 	# walking stuff
 	if !is_on_wall_only():
-		if dir < 0:
+		if dir < 0 and talking == false:
 			baseSprite.flip_h = true
 			flipped.emit(true)
 
 			sword.flip_v = true
 			sword.position.x = abs(swordPosition)
-		elif dir > 0:
+		elif dir > 0 and talking == false:
 			baseSprite.flip_h = false
 			flipped.emit(false)
 
@@ -131,7 +136,7 @@ func handle_inputs(_delta : float) -> void:
 			flipped.emit(baseSprite.flip_h)
 	
 	var speed : float = BASE_SPEED * speed_mult
-	if dir and is_climbing == false:
+	if dir and is_climbing == false and talking == false:
 		velocity.x = dir * speed * _delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)  * _delta
@@ -147,7 +152,7 @@ func handle_inputs(_delta : float) -> void:
 		
 
 	# simple jump, input handling 
-	if Input.is_action_just_pressed("jump") and (is_climbing == false):
+	if Input.is_action_just_pressed("jump") and (is_climbing == false) and (talking == false):
 		# is_on_floor()
 		if coyote_time > 0:
 			coyote_time = 0

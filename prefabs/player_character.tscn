@@ -59,7 +59,7 @@ zoom = Vector2(4.1, 4.1)
 position_smoothing_enabled = true
 script = ExtResource("2_yenwa")
 
-[node name="uiMananger" parent="." instance=ExtResource("3_yenwa")]
+[node name="uiMananger" parent="." groups=["uiMan"] instance=ExtResource("3_yenwa")]
 offset_top = -101.0
 offset_bottom = 45.0
 

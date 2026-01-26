@@ -28,6 +28,7 @@ ladder=""
 npc=""
 overlord=""
 player=""
+uiMan="source of truth for the ui manager"
 
 [input]
 
