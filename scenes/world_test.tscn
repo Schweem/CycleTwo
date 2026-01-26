@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ju1molnkfi56"]
+[gd_scene load_steps=23 format=4 uid="uid://ju1molnkfi56"]
 
 [ext_resource type="PackedScene" uid="uid://btppsxypre06b" path="res://prefabs/player_character.tscn" id="1_7mhm3"]
 [ext_resource type="PackedScene" uid="uid://bx4d0b8unqsu8" path="res://prefabs/overlord.tscn" id="3_voen0"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cqknapylg7rws" path="res://assets/sprites/garfield1.png" id="11_6qtqi"]
 [ext_resource type="Script" uid="uid://drup4tjff5gqt" path="res://scripts/gnome_manager.gd" id="12_c6qvj"]
 [ext_resource type="Texture2D" uid="uid://bpsmd04knrfsn" path="res://assets/sprites/cyclops.png" id="13_q53c7"]
+[ext_resource type="Texture2D" uid="uid://ckvjeqnf6lmvu" path="res://assets/sprites/gome.png" id="14_ukqcy"]
 [ext_resource type="Texture2D" uid="uid://cg4st6m1830hp" path="res://assets/sprites/johnathan.png" id="15_il8wl"]
 [ext_resource type="PackedScene" uid="uid://dmw3qjvuwd2gy" path="res://prefabs/gnome.tscn" id="15_ukqcy"]
+[ext_resource type="Texture2D" uid="uid://5tq5wkpwkjhf" path="res://assets/sprites/borist.png" id="17_b685f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6uhy"]
 texture = ExtResource("6_4lv6h")
@@ -174,10 +176,19 @@ texture_filter = 1
 position = Vector2(455, 376)
 texture = ExtResource("13_q53c7")
 
-[node name="Johnathan" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(573, 342)
-texture = ExtResource("15_il8wl")
-
 [node name="gnome" parent="." instance=ExtResource("15_ukqcy")]
 position = Vector2(585, 342)
+npc_name = "Gome:"
+npc_texture = ExtResource("14_ukqcy")
+
+[node name="johnGnome" parent="." instance=ExtResource("15_ukqcy")]
+position = Vector2(575, 342)
+npc_name = "Johnathan:"
+dialouge = Array[String](["WOAH", "I CAN", "TALK", "?"])
+npc_texture = ExtResource("15_il8wl")
+
+[node name="borist" parent="." instance=ExtResource("15_ukqcy")]
+position = Vector2(629, 342)
+npc_name = "Borist:"
+dialouge = Array[String](["I am here."])
+npc_texture = ExtResource("17_b685f")

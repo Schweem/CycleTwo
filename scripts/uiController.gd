@@ -15,6 +15,7 @@ var playerTalking : bool
 @onready var talk_pannel : Panel = $CanvasLayer/talkBox
 @onready var talk_text : Label = $CanvasLayer/talkBox/Label
 @onready var talk_portrait : Sprite2D = $CanvasLayer/talkBox/Sprite2D
+@onready var talk_name : Label = $CanvasLayer/talkBox/Label2
 
 @onready var statController : Node2D = get_tree().get_first_node_in_group("statCon")
 
@@ -41,8 +42,8 @@ func toggle_interaction() -> void:
 	print('pannel flipped')
 	interaction_pannel.visible = !interaction_pannel.visible
 
-func toggle_dialouge(dialouge : Array[String], index : int = 0) -> void:
-	
+func toggle_dialouge(dialouge : Array[String], name : String = "...", index : int = 0) -> void:
+	talk_name.text = name
 	if playerObject.talking == false:
 		print('dialouge toggle 1')
 		playerObject.talking = true

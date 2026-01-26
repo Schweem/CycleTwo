@@ -1,6 +1,10 @@
 class_name npc extends CharacterBody2D
 
+@export var npc_name : String = "Phil Fish"
 @export var dialouge : Array[String] = ["Hi, I am Phil Fish. I created the game FEZ.", "Okay"]
+
+@export var npc_texture : Texture2D
+@onready var npc_sprite : Sprite2D = $gnomeSprite
 
 var canTalk : bool = false
 var uiManager : Control
@@ -8,6 +12,8 @@ var uiManager : Control
 var index : int = 0
 
 func _ready() -> void:
+	if npc_texture != null:
+		npc_sprite.texture = npc_texture
 	uiManager = get_tree().get_first_node_in_group("uiMan")
 	print(uiManager)
 
@@ -35,7 +41,7 @@ func toggle_talk() -> void:
 
 func talk() -> void:
 	if index < len(dialouge):
-		uiManager.toggle_dialouge(dialouge, index)
+		uiManager.toggle_dialouge(dialouge, npc_name, index)
 		index += 1
 	else:
 		uiManager.end_dialouge()
