@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmw3qjvuwd2gy"]
+[gd_scene format=3 uid="uid://dmw3qjvuwd2gy"]
 
 [ext_resource type="Script" uid="uid://cp6i2uvubgaea" path="res://scripts/classes/npc.gd" id="1_4pklm"]
 
@@ -8,20 +8,20 @@ size = Vector2(14, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4pklm"]
 size = Vector2(25, 20)
 
-[node name="gnome" type="CharacterBody2D" groups=["npc"]]
+[node name="gnome" type="CharacterBody2D" unique_id=63150363 groups=["npc"]]
 collision_mask = 0
 script = ExtResource("1_4pklm")
 
-[node name="gnomeSprite" type="Sprite2D" parent="."]
+[node name="gnomeSprite" type="Sprite2D" parent="." unique_id=926345063]
 texture_filter = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1734068380]
 position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_il8wl")
 
-[node name="Area2D" type="Area2D" parent="." groups=["npc"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=231391315 groups=["npc"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=34982799]
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_4pklm")
 

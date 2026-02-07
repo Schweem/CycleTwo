@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://sfvu22as8pmq"]
+
+[ext_resource type="PackedScene" uid="uid://q6irdurj6k24" path="res://scenes/dialougeController.tscn" id="1_j5px3"]
+
+[node name="root" type="Node2D" unique_id=1129129629]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1712663581]
+
+[node name="Control" parent="CanvasLayer" unique_id=117540373 instance=ExtResource("1_j5px3")]

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://q6irdurj6k24"]
+
+[ext_resource type="Script" uid="uid://uk0exc1swchq" path="res://scripts/dialougeController.gd" id="1_cecyn"]
+
+[node name="Control" type="Control" unique_id=117540373]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cecyn")
+
+[node name="nameLabel" type="Label" parent="." unique_id=903587156]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 181.0
+offset_right = 620.0
+offset_bottom = 217.0
+text = "Name:"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=521215451]
+z_index = -1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 165.0
+offset_right = 643.0
+offset_bottom = 355.0
+
+[node name="labelContent" type="Label" parent="." unique_id=463908093]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 207.0
+offset_right = 618.0
+offset_bottom = 274.0
+theme_override_constants/line_spacing = -3
+text = "lalalalla
+test"
+
+[node name="Button" type="Button" parent="." unique_id=792440688]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 298.0
+offset_right = 199.0
+offset_bottom = 341.0
+text = "Joe"
+
+[node name="Button2" type="Button" parent="." unique_id=590191765]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 298.0
+offset_right = 403.0
+offset_bottom = 341.0
+text = "John"
+
+[node name="Button3" type="Button" parent="." unique_id=1561535270]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 298.0
+offset_right = 614.0
+offset_bottom = 341.0
+text = "Bob"
+
+[connection signal="pressed" from="Button" to="." method="optionOne"]
+[connection signal="pressed" from="Button2" to="." method="optionTwo"]
+[connection signal="pressed" from="Button3" to="." method="optionThree"]
